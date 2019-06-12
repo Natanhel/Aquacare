@@ -26,8 +26,10 @@ export default {
       this.logged = firebase.auth().currentUser != null;
       if  (value){
         console.log('user has logged in');
+        this.$router.replace('home');
       } else {
         console.log('user has logged out');
+        this.$router.replace('login');
       }
     },
   },

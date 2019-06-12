@@ -5,7 +5,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import SignUp from './views/SignUp.vue';
-import confirmEmail from './views/confirmEmail.vue';
+
 
 
 Vue.use(Router);
@@ -19,8 +19,14 @@ const router = new Router({
       name: 'Login',
       component: Login
     },
+    // {
+    //   path: '*',
+    //   name: 'Login',
+    //   component: Login,
+    //   // component: () => import(/* webpackChunkName: "about" */ './views/Login.vue')
+    // },
     {
-      path: '*',
+      path: '/login',
       name: 'Login',
       component: Login,
       // component: () => import(/* webpackChunkName: "about" */ './views/Login.vue')
@@ -47,11 +53,6 @@ const router = new Router({
       name: 'signup',
       component: SignUp,
       // component: () => import(/* webpackChunkName: "about" */ './views/SignUp.vue')
-    },
-    {
-      path: '/confirmEmail*',
-      name: 'confirmEmail',
-      component: confirmEmail,
     }
   ]
 });

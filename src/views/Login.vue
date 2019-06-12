@@ -43,6 +43,11 @@
                 ).then(
                     (user) => {
                         // alert('Welcome back');
+                        if(!user.user.emailVerified) {
+                            firebase.auth().signOut()
+                            alert('Please confirm your email!')
+                            return
+                        }
                         this.$router.replace('home');
                         console.log('Trying to change logged status...');
                         this.$emit('update-visibility', true);

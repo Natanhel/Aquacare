@@ -18,7 +18,7 @@
                 required
                 placeholder="Password"><br>
         <input  v-model="confirm_password" 
-                v-validate="'required|confirmed:password'"
+                
                 maxlength="16" 
                 minlength="6"
                 type="password"
@@ -45,38 +45,68 @@ export default {
     }),
     methods: {
         signup: function() {
-            if (this.password == this.confirm_password) {
+            if (this.password.localeCompare(this.confirm_password) == 0) {
+                // firebase.auth().sendSignInLinkToEmail
+
+                var actionCodeSettings = {
+                    // URL you want to redirect back to. The domain (www.example.com) for this
+                    // URL must be whitelisted in the Firebase Console.
+                    // url: window.location.host + '/confirmEmail',
+                    url: 'https://aquacare-3cdce.firebaseapp.com/confirmEmail',
+                    
+                    // This must be true.
+                    handleCodeInApp: true,
+                    // iOS: {
+                    //     bundleId: 'com.example.ios'
+                    // },
+                    // android: {
+                    //     packageName: 'com.example.android',
+                    //     installApp: true,
+                    //     minimumVersion: '12'
+                    // },
+                    // dynamicLinkDomain: 'example.page.link'
+                };
+
+
+                // Create the email onto the firebase server
                 firebase.auth().createUserWithEmailAndPassword(
                     this.email, this.password
                 ).then(
                     (user) => {
-                    // alert('Your account has been created!')
+                        console.log('Account created') 
 
-                        this.$router.replace('confirmEmail' + this.randomKey())
-                        // this.$emit('update-visibility', true);
-                    },
+                        var user2 = firebase.auth().currentUser;
+                        if  (user2 && !user){
+                            user = user2
+                        } else if (!user && !user2){
+                            return
+                        }
+                        user.user.sendEmailVerification().then(
+                            function() {
+                            console.log('Email sent.')
+                        }).catch(function(error) {
+                            console.log('Oops. ' + error.message)
+                        });
+                        },
                     (err) => {
                         alert('Oops. ' + err.message)
                     }
                 )
-            } else {               
-                alert('Passwords most match!');
+
+
+
+                // firebase.auth().currentUser.sendEmailVerification().then(
+                //     function() {
+                //     console.log('Email sent.')
+                // }).catch(function(error) {
+                //     console.log('Oops. ' + error.message)
+                // });
+
+                firebase.auth().signOut()
+                
+                // this.$router.replace('confirmEmail')
             }   
         },
-
-        randomNumber(min, max) {
-            return Math.floor(Math.random() * (max - min) + min);
-        },
-
-        randomKey() {
-            var i;
-            var key;
-            key = "" + this.randomNumber(1,9);
-            for (i = 0; i < 5; i++) {
-                key += this.randomNumber(0,9);  
-            };
-            return key;
-        }
     },
 }
 </script>
