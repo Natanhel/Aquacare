@@ -2,9 +2,11 @@
   <div id="app">
      <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">  -->
     <div id="nav">
-      <a v-if="logged"><router-link to="/home">Home</router-link> | </a>     
-      <a v-else><router-link to="/login">Login</router-link> | </a>
-      <router-link to="/about">About</router-link>
+      <a v-if="logged"><router-link to="/home">Home</router-link> | 
+      <router-link to="/aboutAuth">About</router-link></a>     
+      <a v-else><router-link to="/login">Login</router-link> | 
+      <router-link to="/about">About</router-link></a>
+      
     </div>
     <transition name="moveInUp">
       <router-view @update-visibility="updateVisibility"/>
