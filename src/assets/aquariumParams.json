@@ -1,0 +1,172 @@
+{
+    "FreshwaterParams": [
+      {  "name": "Temperature"     ,
+        "maxSuggested": [
+          { "community": "82", "africanCichlid": "82", "plantsAndDiscus": "86", 
+            "brackish": "82", "pond": "86"}
+        ],
+        "minSuggested": [
+          { "community": "72", "africanCichlid": "72", "plantsAndDiscus": "76", 
+            "brackish": "72", "pond": "33"}
+        ]
+      },
+      {  "name": "pH"              ,  
+        "maxSuggested": [
+          { "community": "7.5", "africanCichlid": "8.5", "plantsAndDiscus": "7.5" , 
+            "brackish": "8.4", "pond": "7.5"}
+        ],
+        "minSuggested": [
+          { "community": "6.5", "africanCichlid": "7.8", "plantsAndDiscus": "6.0" , 
+            "brackish": "7.5", "pond": "6.5"}
+        ]
+      },
+      {  "name": "Ammonia"         ,  
+        "maxSuggested": [
+          { "community": "0.0", "africanCichlid": "0.0", "plantsAndDiscus": "0.0", 
+            "brackish": "0.0", "pond": "0.0"}
+        ],
+        "minSuggested": [
+          { "community": "0.0", "africanCichlid": "0.0", "plantsAndDiscus": "0.0", 
+            "brackish": "0.0", "pond": "0.0"}
+        ]
+      },
+      {  "name": "Nitrite"         ,  
+        "maxSuggested": [
+          { "community": "0.0", "africanCichlid": "0.0", "plantsAndDiscus": "0.0", 
+            "brackish": "0.0", "pond": "0.0"}
+        ],
+        "minSuggested": [
+        { "community": "0.0", "africanCichlid": "0.0", "plantsAndDiscus": "0.0", 
+            "brackish": "0.0", "pond": "0.0"}
+        ]
+      },
+      {  "name": "Nitrate"         ,  
+        "maxSuggested": [
+          { "community": "50", "africanCichlid": "50", "plantsAndDiscus": "30", 
+            "brackish": "50", "pond": "50"}
+        ],
+        "minSuggested": [
+          { "community": "0", "africanCichlid": "0", "plantsAndDiscus": "0", 
+            "brackish": "0", "pond": "0"}
+        ]
+      },
+      {  "name": "Alkalinity"      ,  
+        "maxSuggested": [
+          { "community": "8", "africanCichlid": "18", "plantsAndDiscus": "8", 
+            "brackish": "18", "pond": "8"}
+        ],
+        "minSuggested": [
+          { "community": "4", "africanCichlid": "10", "plantsAndDiscus": "3", 
+            "brackish": "10", "pond": "4"}
+        ]
+      },
+      {  "name": "General Hardness",  
+        "maxSuggested": [
+          { "community": "12", "africanCichlid": "20", "plantsAndDiscus": "8", 
+            "brackish": "20", "pond": "12"}
+        ],
+        "minSuggested": [
+          { "community": "4", "africanCichlid": "12", "plantsAndDiscus": "3", 
+            "brackish": "12", "pond": "4"}
+        ]
+      }
+    ],
+    "MarineParams": [
+      {  "name": "Specific Gravity",   
+        "maxSuggested": [
+          { "reef": "1.025", "fowler": "1.025", "coral": "1.025" }
+        ],
+        "minSuggested": [
+          { "reef": "1.023", "fowler": "1.020", "coral": "1.025" }
+        ]
+      },
+      {  "name": "Temperature",   
+        "maxSuggested": [
+          { "reef": "78", "fowler": "78", "coral": "82" }
+        ],
+        "minSuggested": [
+          { "reef": "72", "fowler": "72", "coral": "82" }
+        ]
+      },
+      {  "name": "pH",          
+        "maxSuggested": [
+            { "reef": "8.4", "fowler": "8.4", "coral": "8.5" }
+          ],
+          "minSuggested": [
+            { "reef": "8.1", "fowler": "8.1", "coral": "8.0" }
+          ]
+      },
+      {  "name": "Alkalinity",  
+        "maxSuggested": [
+          { "reef": "12", "fowler": "12", "coral": "8" }
+        ],
+        "minSuggested": [
+          { "reef": "8", "fowler": "8", "coral": "6" }
+        ]
+      },
+      {  "name": "Ammonia (NH3)",   
+        "maxSuggested": [
+          { "reef": "0", "fowler": "0", "coral": "0" }
+        ],
+        "minSuggested": [
+          { "reef": "0", "fowler": "0", "coral": "0" }
+        ]
+      }, 
+      {  "name": "Nitrite (NO2)",   
+        "maxSuggested": [
+          { "reef": "0", "fowler": "0", "coral": "0" }
+        ],
+        "minSuggested": [
+          { "reef": "0", "fowler": "0", "coral": "0" }
+        ]
+      }, 
+      {  "name": "Nitrate",     
+        "maxSuggested": [
+          { "reef": "1.0", "fowler": "30", "coral": "0.25" }
+        ],
+        "minSuggested": [
+          { "reef": "0", "fowler": "0", "coral": "0" }
+        ]
+      },
+      {  "name": "Phosphate (PO4)",   
+        "maxSuggested": [
+          { "reef": "0.2", "fowler": "1.0", "coral": "0.13" }
+        ],
+        "minSuggested": [
+          { "reef": "0", "fowler": "0", "coral": "0" }
+        ]
+      }, 
+      {  "name": "Calcium",     
+        "maxSuggested": [
+          { "reef": "450", "fowler": "450", "coral": "420" }
+        ],
+        "minSuggested": [
+          { "reef": "350", "fowler": "350", "coral": "380" }
+        ]
+      },
+      {  "name": "Magnesium",   
+        "maxSuggested": [
+          { "reef": "1350", "fowler": "1350", "coral": "1300" }
+        ],
+        "minSuggested": [
+          { "reef": "1250", "fowler": "1150", "coral": "1300" }
+        ]
+      },
+      {  "name": "Iodine",      
+        "maxSuggested": [
+            { "reef": "0.10", "fowler": "0.10", "coral": "0.06" }
+          ],
+          "minSuggested": [
+            { "reef": "0.06", "fowler": "0.04", "coral": "0.06" }
+          ]
+      },
+      {  "name": "Strontium",   
+        "maxSuggested": [
+            { "reef": "14", "fowler": "10", "coral": "10" }
+          ],
+          "minSuggested": [
+            { "reef": "8", "fowler": "4", "coral": "8" }
+          ]
+      }
+    ]
+}

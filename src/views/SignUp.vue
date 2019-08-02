@@ -1,34 +1,33 @@
 <template>
     <div class="signup">
         <h3>Let's create a new account!</h3>
-        <input  v-model="email" 
+        <v-text-field  v-model="email" 
                 maxlength="64" 
                 minlength="4"
                 title="Please enter your email"
                 autofocus
-                autocomplete="true"
+                autocomplete="false"
                 required
-                placeholder="E-mail"><br>
-        <input  v-model="password" 
+                placeholder="E-mail"/>
+        <v-text-field  v-model="password" 
                 maxlength="16" 
                 minlength="6"
                 type="password"
                 title="Please enter your password"
-                autocomplete="true"
+                autocomplete="false"
                 required
-                placeholder="Password"><br>
-        <input  v-model="confirm_password" 
-                
+                placeholder="Password"/>
+        <v-text-field  v-model="confirm_password"                
                 maxlength="16" 
                 minlength="6"
                 type="password"
                 title="Please enter your password"
-                autocomplete="true"
+                autocomplete="false"
                 required
-                placeholder="Confirm Password"><br>
+                placeholder="Confirm Password"/>
         <a v-bind:style="{color: 'red'}" v-if="confirm_password!='' && password!=confirm_password">Passwords most match!</a>
         <br>
-        <button @click="signup"> Sign Up </button>
+        <v-btn @click="signup"> Sign Up </v-btn>
         <span> go back to <router-link to="login">login</router-link></span>
     </div>
 </template>
@@ -93,18 +92,7 @@ export default {
                     }
                 )
 
-
-
-                // firebase.auth().currentUser.sendEmailVerification().then(
-                //     function() {
-                //     console.log('Email sent.')
-                // }).catch(function(error) {
-                //     console.log('Oops. ' + error.message)
-                // });
-
                 firebase.auth().signOut()
-                
-                // this.$router.replace('confirmEmail')
             }   
         },
     },

@@ -1,12 +1,29 @@
-import Vue from 'vue'
-import App from './App.vue'
 
+import Vue from 'vue'
+import Vuetify from 'vuetify'
+import App from './App.vue'
+// import '../node_modules/vuetify/dist/vuetify.min.css';
+
+// import colors from 'vuetify/es5/util/colors'
 import router from './router'
 import store from './store'
 import firebase from 'firebase'
-
+import vuetify from './plugins/vuetify';
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 Vue.config.productionTip = false
+
+Vue.use(Vuetify);
+
+// export default new Vuetify({
+//   primary: colors.light-green.base,
+//   secondary: colors.green.base,
+//   accent: colors.lime.base,
+//   error: colors.deep-orange.base,
+//   warning: colors.orange.base,
+//   info: colors.blue.base,
+//   success: colors.indigo.base
+// })
 
 let app = '';
 
@@ -24,8 +41,12 @@ firebase.auth().onAuthStateChanged(() => {
     app = new Vue({
       router,
       store,
-      
-      render: h => h(App)
+      firebase,
+      vuetify,
+      render: h => h(App),
+      created() {
+
+      },
     }).$mount('#app')
   }
 });

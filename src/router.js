@@ -5,6 +5,11 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import SignUp from './views/SignUp.vue';
+import Account from './views/Account.vue';
+import AquariumSettings from './views/AquariumSettings.vue';
+import Categorizer from './views/Categorizer.vue';
+import Scheduler from './views/Scheduler.vue';
+import Settings from './views/Settings.vue';
 
 
 
@@ -19,17 +24,10 @@ const router = new Router({
       name: 'Login',
       component: Login
     },
-    // {
-    //   path: '*',
-    //   name: 'Login',
-    //   component: Login,
-    //   // component: () => import(/* webpackChunkName: "about" */ './views/Login.vue')
-    // },
     {
       path: '/login',
       name: 'Login',
       component: Login,
-      // component: () => import(/* webpackChunkName: "about" */ './views/Login.vue')
     },
     {
       path: '/home',
@@ -38,7 +36,6 @@ const router = new Router({
       meta: {
         requiresAuth: true
       },
-      // component: () => import(/* webpackChunkName: "about" */ './views/Home.vue')
     },
     {
       path: '/about',
@@ -66,12 +63,51 @@ const router = new Router({
       // component: () => import(/* webpackChunkName: "about" */ './views/SignUp.vue')
     },
     {
+      path: '/account',
+      name: 'Account',
+      component: Account,
+      meta: {
+        requiresAuth: true
+      },
+    },
+    {
+      path: '/aquariumSettings',
+      name: 'AquariumSettings',
+      component: AquariumSettings,
+      meta: {
+        requiresAuth: true
+      },
+    },
+    {
+      path: '/categorizer',
+      name: 'Categorizer',
+      component: Categorizer,
+      meta: {
+        requiresAuth: true
+      },
+    },
+    {
+      path: '/scheduler',
+      name: 'Scheduler',
+      component: Scheduler,
+      meta: {
+        requiresAuth: true
+      },
+    },
+    {
+      path: '/settings',
+      name: 'Settings',
+      component: Settings,
+      meta: {
+        requiresAuth: true
+      },
+    },    
+    {
       path: '/*',
       name: 'Login',
       component: Login,
       // component: () => import(/* webpackChunkName: "about" */ './views/Login.vue')
     },
-
   ]
 });
 

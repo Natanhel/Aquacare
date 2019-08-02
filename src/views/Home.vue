@@ -1,31 +1,40 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <Schedule msg="Welcome to Your AquaCare schedule"/>
-    <button @click="logut">Log Out</button>
+    <!-- <h1>Welcome Home</h1> -->
+    <!-- <v-btn @click="logout">wat</v-btn> -->
+    <v-container fill-height> 
+    <v-layout row wrap align-center>
+      <v-list
+        v-for="(page, index) in pages"
+        :key="index">
+          <v-list-item router :to="page.router">
+            <v-list-item-title>
+              <v-flex>
+                <v-img :src="page.imgSrc" height="140" width="140"/>
+                <h4 color="green">{{ page.name }}</h4>
+              </v-flex>
+            </v-list-item-title>
+          </v-list-item>
+      </v-list>
+    </v-layout>
+    </v-container>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import Schedule from '@/components/Schedule.vue';
-import firebase from 'firebase';
-// import login from '@/views/Login.vue'
 
+import firebase from 'firebase';
 export default {
-  name: 'home',
+
   components: {
-    Schedule
-    // login
+    firebase,
   },
-  methods: {
-    logut: function(){
-      firebase.auth().signOut().then(() => {
-        this.$router.replace('login')
-        // firebase.auth().currentUser.email = ""
-        this.$emit('update-visibility', false)
-      })
-    }
-  }
-}
+  data: () => ({
+    pages: [
+      { name: 'Aquariums',      imgSrc: require('../assets/002-aquarium-1.svg'), router: '/AquariumSettings'},
+      { name: 'Search Desease', imgSrc: require('../assets/015-healthcare-and-medical-1.svg'), router: '/Categorizer'},
+      { name: 'Scheduler',      imgSrc: require('../assets/020-schedule.svg'), router: '/Scheduler'},
+    ]
+  }),
+};
 </script>

@@ -7,15 +7,27 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "@fortawesome/fontawesome-free": "^5.8.2",
     "core-js": "^2.6.5",
+    "dayspan-vuetify": "^0.4.0",
     "firebase": "^6.1.0",
+    "material-design-icons-iconfont": "^5.0.1",
+    "roboto-fontface": "*",
     "vue": "^2.6.10",
+    "vue-moment": "^4.0.0",
     "vue-router": "^3.0.3",
+    "vue-select": "^3.1.0",
+    "vuetify": "^2.0.4",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-service": "^3.8.0",
-    "vue-template-compiler": "^2.6.10"
+    "sass": "^1.22.9",
+    "sass-loader": "^7.1.0",
+    "vue-cli-plugin-vuetify": "^0.6.1",
+    "vue-template-compiler": "^2.6.10",
+    "vuetify-loader": "^1.2.2"
   }
 }
