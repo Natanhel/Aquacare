@@ -1,26 +1,11 @@
 <template>
-  <nav>
-    <v-toolbar light >
-      <v-app-bar-nav-icon @click="drawer = !drawer">
-        <v-icon color="green" right>menu</v-icon>
-      </v-app-bar-nav-icon>
-      
-      <v-toolbar-title class="green--text">
-        <span class="font-weight-light">Aquacare</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <a v-if="logged">
-        <v-btn text color="green" v-on:click="log" router to="/login">        
-          <span>{{ status_logged }}</span>
-          <v-icon right>exit_to_app</v-icon>
-        </v-btn>
-      </a>
-    </v-toolbar>
-  <a v-if="logged">
-    <v-navigation-drawer app v-model="drawer"
-    class="green lighten-5">
+  <div class="NavBar">
 
-      <v-list>
+    <a v-if="logged">
+      <v-navigation-drawer app v-model="drawer" disable-resize-watcher absolute
+      class="green lighten-5">
+
+       <v-list>
           <v-list-item
             v-for="item in items"
             :key="item.title"
@@ -34,8 +19,25 @@
         </v-list>
       </v-navigation-drawer>
     </a>
-    <a v-else><v-navigation-drawer disable/></a>
-  </nav>
+
+    <v-toolbar light >
+      <v-app-bar-nav-icon @click="drawer = !drawer">
+        <v-icon color="green" right>menu</v-icon>
+      </v-app-bar-nav-icon>
+      
+      <v-toolbar-title class="green--text">
+        <span class="font-weight-light">Aquacare</span>
+      </v-toolbar-title>
+
+      <v-spacer></v-spacer>
+      <a v-if="logged">
+        <v-btn text color="green" v-on:click="log" router to="/login">        
+          <span>{{ status_logged }}</span>
+          <v-icon right>exit_to_app</v-icon>
+        </v-btn>
+      </a>
+    </v-toolbar>
+  </div>
 </template>
 
 
@@ -49,6 +51,7 @@ export default {
   name: 'NavBar',
   data: () => ({
     drawer: null,
+    drawerWasClosed: false,
     logged: firebase.auth().currentUser != null,
     items: [
       { title: 'Home', icon: 'dashboard', route: '/login', action: '' },
@@ -81,7 +84,7 @@ export default {
       } else {
         this.$root.$emit('updateVisibility', true);
       }
-    },    
+    },
   },
   mounted() {
     this.$root.$on('updateVisibility', (value) => {

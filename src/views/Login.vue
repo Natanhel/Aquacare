@@ -1,6 +1,6 @@
 <template>
     <div class="login">
-        <h3 style="color: green;">Sign In</h3>
+        <h2 style="color: green;">Sign In</h2>
           <v-form>
             <v-container grid-list-xl>
                 <v-layout wrap justify-center>
@@ -39,9 +39,7 @@
                             :outlined="outlined"
                             :clearable="clearable"
                             :append-icon="showPassword ? 'visibility' : 'visibility_off'"
-                            
-                            :type="showPassword ? 'text' : 'password'"
-                            error
+                            :type="showPassword ? 'text' : 'password'"                            
                             outlines
                             @click:append="showPassword = !showPassword"
                             @keypress.enter="login"/>
@@ -54,9 +52,14 @@
                         <v-btn color="green lighten-2" @click="login"> Connect </v-btn>
                     </v-flex>
                     <v-flex xs4/>
-                    <p>Don't have an account? 
+                    <h4>Don't have an account? 
                         <router-link to="/signup">Create one now</router-link>
-                    </p>
+                    </h4>
+                    <v-flex xs12>
+                        <h4>
+                            <router-link to="/pwdReset">Forgot passweord?</router-link>
+                        </h4>
+                    </v-flex>
                 </v-layout>
             </v-container>
         </v-form>

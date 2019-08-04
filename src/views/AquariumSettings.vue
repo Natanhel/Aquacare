@@ -1,26 +1,15 @@
 <template>
   <div class="aquariumSettings">
     <h1>Aquarium Settings</h1>
-    <v-layout>
-      <Aquarium id="aquarium">#</Aquarium>
-    </v-layout>
-    <!-- <v-layout>
-      <v-list-tile two-line
-        v-for="option in options"
-        :key="option.title"
-        router :to="option.routingTo">
 
-
-      <v-list-item-content >
-        <v-list-item-avatar>          
-          <v-img :src="option.source" height="120" width="120"/>
-        </v-list-item-avatar>
-        <v-list-item-subtitle><h4 class="primary">{{ option.title }}</h4></v-list-item-subtitle>
-      </v-list-item-content>
-          
-      </v-list-tile>
-    </v-layout> -->
-
+    <v-container grid-list-xl class="scrollable">
+      <v-layout v-bind="binding" fill-height="">
+        <v-flex v-for="i in aquariums" :key="i">
+          <Aquarium class="aquarium"/>
+        </v-flex>
+      </v-layout>
+    </v-container>
+    <!-- <v-btn @click="addAquarium">Add Aquarium {{ this.aquariums }}</v-btn> -->
   </div>
 </template>
 
@@ -33,12 +22,35 @@ export default {
     Aquarium,
   },
   data: () => ({
-    hieght: 0,
-    width: 0,
-    length: 0,
-    aquariumTypes: ['Freshwater','Marine'],
-    aquariumType: aquariumTypes,
-    
+    aquariums: 5
   }),
+  methods: {
+    addAquarium: function (){
+      this.aquariums = this.aquariums + 1
+    },
+  },
+  computed: {
+    binding () {
+      const binding = {}
+
+      if (this.$vuetify.breakpoint.mdAndUp) binding.column = false
+
+      return binding
+    },
+  },
 }
 </script>
+
+<style>
+
+.aquariumSettings {
+  overflow-x: scroll;
+
+}
+
+.scrollable{
+       /* margin-top: 20px; */
+       /* height: 80%; */
+       width: 100%;
+  }
+</style>

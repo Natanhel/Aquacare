@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <!-- <h1>Welcome Home</h1> -->
-    <!-- <v-btn @click="logout">wat</v-btn> -->
     <v-container fill-height> 
     <v-layout row wrap align-center>
       <v-list

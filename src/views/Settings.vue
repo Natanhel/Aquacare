@@ -1,6 +1,6 @@
 <template>
   <div class="settings">
-    <h1>Aquarium Settings</h1>
+    <h1>Settings</h1>
   </div>
 </template>
 

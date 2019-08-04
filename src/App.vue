@@ -3,11 +3,13 @@
 
     <v-app >
       <NavBar/>
-      <transition name="moveInUp">
-        <v-layout row wrap align-center justify-center>
-          <router-view/>
-        </v-layout>
-      </transition>
+      <!-- <v-flex fill-height="true"> -->
+        <transition name="moveInUp">
+          <v-layout row wrap align-center justify-center>
+            <router-view/>
+          </v-layout>
+        </transition>
+      <!-- </v-flex> -->
     </v-app>
 
   </div>
