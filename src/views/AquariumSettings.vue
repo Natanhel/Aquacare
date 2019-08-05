@@ -2,14 +2,16 @@
   <div class="aquariumSettings">
     <h1>Aquarium Settings</h1>
 
+    <v-btn fab @click="addAquarium">
+      <v-icon dark>add</v-icon>
+    </v-btn>
     <v-container grid-list-xl class="scrollable">
-      <v-layout v-bind="binding" fill-height="">
+      <v-layout v-bind="binding">
         <v-flex v-for="i in aquariums" :key="i">
           <Aquarium class="aquarium"/>
         </v-flex>
       </v-layout>
     </v-container>
-    <!-- <v-btn @click="addAquarium">Add Aquarium {{ this.aquariums }}</v-btn> -->
   </div>
 </template>
 
@@ -22,7 +24,7 @@ export default {
     Aquarium,
   },
   data: () => ({
-    aquariums: 5
+    aquariums: 1
   }),
   methods: {
     addAquarium: function (){
@@ -50,7 +52,9 @@ export default {
 
 .scrollable{
        /* margin-top: 20px; */
-       /* height: 80%; */
+       /* height: 700px; */
        width: 100%;
+       overflow-y: disabled;
+        
   }
 </style>

@@ -13,14 +13,14 @@
           </v-layout>
         </v-container>
         <v-flex class="card">
-          <v-container fluid grid-list-sm>
-            <v-layout wrap>
-              <v-flex v-for="(param, index) in params" :key="index" xs6>
-                <v-text-field :label="param.name">{{ param.value }}</v-text-field>
-              </v-flex>
-              <v-spacer></v-spacer>
-            </v-layout>
-          </v-container>
+          <!-- <v-container fluid grid-list-sm> -->
+          <v-layout wrap>
+            <v-flex v-for="(param, index) in params" :key="index" xs6>
+              <v-text-field :label="param.name">{{ param.value }}</v-text-field>
+            </v-flex>
+            <v-spacer></v-spacer>
+          </v-layout>
+          <!-- </v-container> -->
         </v-flex>
       </v-card>
     </v-app>
@@ -73,4 +73,8 @@ export default {
 </script>
 
 <style>
+.aquarium {
+  overflow: hidden;
+  height: 78vh;
+}
 </style>
