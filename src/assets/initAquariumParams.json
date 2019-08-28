@@ -1,0 +1,25 @@
+{
+    "FreshwaterParams": [
+      { "name": "Temperature", "value": 0 },
+      { "name": "pH", "value": 0 },
+      { "name": "Ammonia (NH3)", "value": 0 },
+      { "name": "Nitrite (NO2)", "value": 0 },
+      { "name": "Nitrate (NO3)", "value": 0 },
+      { "name": "Alkalinity", "value": 0 },
+      { "name": "General Hardness", "value": 0 }
+    ],
+    "MarineParams": [
+      { "name": "Specific Gravity", "value": 0 },
+      { "name": "Temperature", "value": 0 },
+      { "name": "pH", "value": 0 },
+      { "name": "Alkalinity", "value": 0 },
+      { "name": "Ammonia (NH3)", "value": 0 },
+      { "name": "Nitrite (NO2)", "value": 0 },
+      { "name": "Nitrate (NO3)", "value": 0 },
+      { "name": "Phosphate (PO4)", "value": 0 },
+      { "name": "Calcium", "value": 0 },
+      { "name": "Magnesium", "value": 0 },
+      { "name": "Iodine", "value": 0 },
+      { "name": "Strontium", "value": 0 }
+    ]
+}

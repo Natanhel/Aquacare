@@ -1,8 +1,29 @@
 <template>
   <div class="NavBar">
 
+    <v-toolbar light >
+      <v-app-bar-nav-icon @click="drawer = !drawer">
+        <v-icon color="green" right>menu</v-icon>
+      </v-app-bar-nav-icon>
+      
+      <v-spacer></v-spacer>
+      
+      <v-toolbar-title class="green--text">
+        <span class="font-weight-light">Aquacare</span>
+      </v-toolbar-title>
+      
+
+      <v-spacer></v-spacer>
+      <a v-if="logged">
+        <v-btn text color="green" v-on:click="log" router to="/login">        
+          <span>{{ status_logged }}</span>
+          <v-icon right>exit_to_app</v-icon>
+        </v-btn>
+      </a>
+    </v-toolbar>
+
     <a v-if="logged">
-      <v-navigation-drawer app v-model="drawer" disable-resize-watcher absolute
+      <v-navigation-drawer app v-model="drawer" enable-resize-watcher absolute
       class="green lighten-5">
 
        <v-list>
@@ -20,23 +41,6 @@
       </v-navigation-drawer>
     </a>
 
-    <v-toolbar light >
-      <v-app-bar-nav-icon @click="drawer = !drawer">
-        <v-icon color="green" right>menu</v-icon>
-      </v-app-bar-nav-icon>
-      
-      <v-toolbar-title class="green--text">
-        <span class="font-weight-light">Aquacare</span>
-      </v-toolbar-title>
-
-      <v-spacer></v-spacer>
-      <a v-if="logged">
-        <v-btn text color="green" v-on:click="log" router to="/login">        
-          <span>{{ status_logged }}</span>
-          <v-icon right>exit_to_app</v-icon>
-        </v-btn>
-      </a>
-    </v-toolbar>
   </div>
 </template>
 

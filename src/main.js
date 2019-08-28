@@ -2,6 +2,9 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import App from './App.vue'
+
+import VueFire from 'vuefire'
+import 'firebase/firestore'
 // import '../node_modules/vuetify/dist/vuetify.min.css';
 
 // import colors from 'vuetify/es5/util/colors'
@@ -14,6 +17,7 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'
 Vue.config.productionTip = false
 
 Vue.use(Vuetify);
+// Vue.use(VueFire);
 
 // export default new Vuetify({
 //   primary: colors.light-green.base,
@@ -25,6 +29,10 @@ Vue.use(Vuetify);
 //   success: colors.indigo.base
 // })
 
+
+require("firebase/firestore");
+
+
 let app = '';
 
 firebase.initializeApp({
@@ -35,6 +43,10 @@ firebase.initializeApp({
   storageBucket: 'aquacare-3cdce.appspot.com',
   messagingSenderId: '794228416189'
 });
+
+
+var db = firebase.firestore();
+
 
 firebase.auth().onAuthStateChanged(() => {
   if  (!app) {

@@ -67,45 +67,72 @@
 </template>
 
 <script>
-    import firebase from 'firebase'
-    export default {
-        name: 'login',
+import firebase from 'firebase'
+export default {
+    name: 'login',
 
-        data: () => ({
-            rounded: true,
-            outlined: true,
-            clearable: false,
-            password: 'Password',
-            showPassword: false,
-            email: '',
-            password: '',
-        }),
-        methods: {
-            login: function() {
-                if  (this.email != '' && this.password != '')
-                firebase.auth().signInWithEmailAndPassword(
-                    this.email,
-                    this.password
-                ).then(
-                    (user) => {
-                        // alert('Welcome back');
-                        if(!user.user.emailVerified) {
-                            firebase.auth().signOut()
-                            alert('Please confirm your email!')
-                            return
-                        }
-                        this.$router.push('home');
-                        console.log('Trying to change logged status...');
-                        this.$root.$emit('updateVisibility', true);
-                    },
-                    (err) =>{
-                        alert('Oops. ' + err.message)
+    data: () => ({
+        rounded: true,
+        outlined: true,
+        clearable: false,
+        password: 'Password',
+        showPassword: false,
+        email: '',
+        password: '',
+        userExistsInDB: false,
+    }),
+    methods: {
+        confirmDBLogin: function() {
+            var db = firebase.firestore();
+            var usersCollection = db.collection("users");
+            var currUserDoc = usersCollection.doc(this.email);
+
+            currUserDoc.get().then((doc) => {
+                if(doc.exists){
+                    console.log("user data found, loading preferences");
+                    // console.log("loaded user: " + doc.data().userID + "\n" +
+                    //             "loaded theme: " + doc.data().userTheme);
+                    ///TODO set these preferences
+                } else {
+                    console.log("user data not found, setting up first time preferences");
+                    currUserDoc.set({
+                        userID: this.email,
+                        userTheme: 1,
+                    });
+                }
+            }).catch(function(error) {
+                console.log("Error getting document:", error);
+            });;
+
+        },
+        login: function() {
+            if  (this.email != '' && this.password != '')
+            firebase.auth().signInWithEmailAndPassword(
+                this.email,
+                this.password
+            ).then(
+                (user) => {
+                    // alert('Welcome back');
+                    if(!user.user.emailVerified) {
+                        firebase.auth().signOut()
+                        alert('Please confirm your email!')
+                        return
                     }
-                );
-                // this.$router.replace('home');
-            }
+
+                    this.confirmDBLogin();
+
+                    this.$router.push('home');
+                    // console.log('Trying to change logged status...');
+                    this.$root.$emit('updateVisibility', true);
+                },
+                (err) =>{
+                    alert('Oops. ' + err.message)
+                }
+            );
+            // this.$router.replace('home');
         }
     }
+}
     
 </script>
 
