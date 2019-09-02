@@ -1,5 +1,8 @@
 <template>
   <div class="aquariumSettings">
+  <loader v-show="!loaded"/>
+    
+  <div v-show="loaded">
     <h1>Aquarium Settings</h1>
 
     <button @click="scroll_left">
@@ -36,18 +39,22 @@
       </v-layout>
     </v-container>
   </div>
+  </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import firebase from 'firebase';
 import Aquarium from '@/components/Aquarium.vue'
+import Loader from '@/components/Loader.vue'
 export default {
   name: 'aquariumSettings',
   components: {
     Aquarium,
+    Loader,
   },
   created() {
+    this.loaded = false;
     fetch('/aquariums').then(() => {
       // We fetch the user aquariums from the DB in order to initialize
       // user aquariums :)
@@ -88,7 +95,7 @@ export default {
           userAquariums.forEach(el => {
             this.aquariums.push(el);
           })
-          
+          this.loaded = true;
         }
       })
     })
@@ -101,7 +108,9 @@ export default {
   },
   methods: {
     deleteAquarium (index){
+      
       this.$delete(this.aquariums,index);
+      alert('Deleted aquarium succesfully, to confirm changes save your changes')
     },
     changeType (type, index){
       this.aquariums[index].aquariumType = type;
@@ -139,12 +148,8 @@ export default {
       // Update DB with the new aquarium
       //TODO Check that all aquariums have aquarium types
       usersCollection.doc(email).set(mainJSObj)
-      .then(function(doc){
-        if  (doc.exists){
-          console.log('Doc ID updated: ' + doc.id);
-          this.$root.emit('updateID',doc.id)
-
-        }
+      .then(function(){
+        alert("Saved your Aquariums :)")
       });
     },
     addAquarium: function (){
