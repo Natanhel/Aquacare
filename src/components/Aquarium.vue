@@ -25,8 +25,8 @@
         <v-flex class="card">
           <!-- <v-container fluid grid-list-sm> -->
           <v-layout wrap>
-            <v-flex v-for="(param, index) in params" :key="index" xs6>
-              <v-text-field :label="param.name" v-model="param.value"></v-text-field>
+            <v-flex v-for="(param, propertyName, index) in params" :key="index" xs6>
+              <v-text-field @change="onChangedParams(propertyName,$event)" :label="propertyName" :value="param"></v-text-field>
             </v-flex>
             <v-spacer></v-spacer>
           </v-layout>
@@ -45,9 +45,9 @@ export default {
     params: function() {
       this.onAquariumTypeChanged();
       if (this.aquariumType === "Freshwater") {
-        return this.FreshwaterParams;
+        return this.Freshwater;
       } else if (this.aquariumType === "Marine") {
-        return this.MarineParams;
+        return this.Marine;
       }
     }
   },
@@ -57,11 +57,11 @@ export default {
       required: true
     },
     Freshwater: {
-      type: Array,
+      type: Object,
       required: true
     },
     Marine: {
-      type: Array,
+      type: Object,
       required: true
     },
     index: {
@@ -69,48 +69,21 @@ export default {
       required: true
     }
   },
-  // created: function() {
-  //   console.log('Creating a new aquarium')
-  //   aquariumType = this.aquariumTypeProp;
-  //   FreshwaterParams = this.Freshwater;
-  //   MarineParams = this.Marine;
-    
-  // },
+  created: function() {
+    console.log('Creating a new aquarium')
+    // aquariumType = this.aquariumTypeProp;
+    // FreshwaterParams = this.Freshwater;
+    // MarineParams = this.Marine;    
+  },
   data () {
     return{
       hieght: 0,
       width: 0,
       length: 0,
       email: '',
-      // showAquarium: true,
       aquariumID: this.index,
       aquariumTypes: ["Freshwater", "Marine"],
-      aquariumType: this.aquariumTypeProp,
-      //These exist during run time because we have a shallow copy on the component
-      //instance from the JSON file called initAquariumParams
-      // FreshwaterParams: [
-      //   { name: "Temperature", value: 0 },
-      //   { name: "pH", value: 0 },
-      //   { name: "Ammonia (NH3)", value: 0 },
-      //   { name: "Nitrite (NO2)", value: 0 },
-      //   { name: "Nitrate (NO3)", value: 0 },
-      //   { name: "Alkalinity", value: 0 },
-      //   { name: "General Hardness", value: 0 }
-      // ],
-      // MarineParams: [
-      //   { name: "Specific Gravity", value: 0 },
-      //   { name: "Temperature", value: 0 },
-      //   { name: "pH", value: 0 },
-      //   { name: "Alkalinity", value: 0 },
-      //   { name: "Ammonia (NH3)", value: 0 },
-      //   { name: "Nitrite (NO2)", value: 0 },
-      //   { name: "Nitrate (NO3)", value: 0 },
-      //   { name: "Phosphate (PO4)", value: 0 },
-      //   { name: "Calcium", value: 0 },
-      //   { name: "Magnesium", value: 0 },
-      //   { name: "Iodine", value: 0 },
-      //   { name: "Strontium", value: 0 }
-      // ]
+      aquariumType: this.aquariumTypeProp,     
     }
   },
   methods: {
@@ -146,6 +119,10 @@ export default {
       onAquariumTypeChanged: function() {
         this.$emit('changeType',this.aquariumType,this.aquariumID);
       },
+      onChangedParams: function (propertyName,event) {
+        // this.params[propertyName] = event;
+        this.$emit('changedCurrentParams',propertyName,this.aquariumType,event,this.aquariumID)
+      }
   },
   mounted() {
     this.$root.$on('setUserEmail', (value) => {

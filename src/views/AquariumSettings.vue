@@ -30,6 +30,7 @@
                     :Marine="value.Marine"
                     :index="index"
                     @deleteCurrentAquarium="deleteAquarium"
+                    @changedCurrentParams="changedParams"
                     @changeType="changeType"/>
         </v-container>
       </v-layout>
@@ -50,37 +51,63 @@ export default {
     fetch('/aquariums').then(() => {
       // We fetch the user aquariums from the DB in order to initialize
       // user aquariums :)
-      var userAquariums = [];
+      // var userAquariums = [];
       var db = firebase.firestore();
       var usersCollection = db.collection("aquariums");
       var userDocIDAndEmail = firebase.auth().currentUser.email;
       var currUserDoc = usersCollection.doc(userDocIDAndEmail);
+      var userAquariums = [];
 
       //Data should be collected from DB, now we only need to orgenize the data
       //in our standard form of displaying.
-      currUserDoc.get().then(function(doc){
+      currUserDoc.get().then((doc) => {
         if  (doc.exists){          
 
-          console.log("Document data:", doc.data());
-          JSON.parse(JSON.stringify(doc.data())).forEach(function(value,index){
-            userAquariums[index] = value.data();
-          })
+          // console.log("Document data:", doc.data());
+          var userData = JSON.parse(JSON.stringify(doc.data()))
+          console.log(Object.keys(userData).length)
+          for (var i = 0; i < Object.keys(userData).length; i++) {
+            var aquariumTypeData = userData[i]['aquariumType'];
 
-          // this.aquariums = userAquariums
+            var dataJSON = JSON.parse(JSON.stringify(userData[i]));
+            delete dataJSON['aquariumType']
+            if  (aquariumTypeData == 'Freshwater'){
+              userAquariums.push({
+                aquariumType: aquariumTypeData,
+                Freshwater: dataJSON,
+                Marine: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").MarineParams)),
+              });
+            } else {
+              userAquariums.push({
+                aquariumType: aquariumTypeData,
+                Freshwater: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").FreshwaterParams)),
+                Marine: dataJSON,
+              });
+            }
+          }
+          userAquariums.forEach(el => {
+            this.aquariums.push(el);
+          })
+          
         }
       })
-
     })
   },
   data: () => ({
     aquariums: []
   }),
+  mounted: {
+    
+  },
   methods: {
     deleteAquarium (index){
       this.$delete(this.aquariums,index);
     },
     changeType (type, index){
       this.aquariums[index].aquariumType = type;
+    },
+    changedParams(propertyName,aquariumType,event,index){
+      this.aquariums[index][aquariumType][propertyName] = event
     },
     saveAquariums: function(){
       var db = firebase.firestore();
@@ -94,32 +121,30 @@ export default {
         // aquariumType: this.aquariumType,
       };
       this.aquariums.forEach(function(value,index){
-        var jsObj = {
-        // userID: email,
-        // aquariumType: this.aquariumType,
-        };
-        // jsObj["index"] = index;
-        jsObj["aquariumType"] = value.aquariumType
+        var jsObj = {};
 
         if (value.aquariumType == "Freshwater"){
-          value.Freshwater.forEach(function(param) {
-              jsObj[param.name] = param.value;
-          })
+          jsObj = JSON.parse(JSON.stringify(value.Freshwater)); 
         } else {
-          value.Marine.forEach(function(param) {
-              jsObj[param.name] = param.value;
-          })
+          jsObj = JSON.parse(JSON.stringify(value.Marine));
         }
-        mainJSObj[index] = jsObj;
+        
+        jsObj['aquariumType'] = value.aquariumType
+
+        mainJSObj[index] = jsObj
       })
 
 
       console.log(mainJSObj);
       // Update DB with the new aquarium
+      //TODO Check that all aquariums have aquarium types
       usersCollection.doc(email).set(mainJSObj)
       .then(function(doc){
-        console.log('Doc ID updated: ' + doc.id);
-        this.$root.emit('updateID',doc.id)
+        if  (doc.exists){
+          console.log('Doc ID updated: ' + doc.id);
+          this.$root.emit('updateID',doc.id)
+
+        }
       });
     },
     addAquarium: function (){
@@ -130,14 +155,14 @@ export default {
       });
     },
 
-    userAquariums: function (){
+    // userAquariums: function (){
       
-      return [{
-        aquariumType: "",
-        Freshwater: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").FreshwaterParams)),
-        Marine: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").MarineParams)),
-      }]
-    },
+    //   return [{
+    //     aquariumType: "",
+    //     Freshwater: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").FreshwaterParams)),
+    //     Marine: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").MarineParams)),
+    //   }]
+    // },
 
     scroll_left() {
       let content = document.querySelector(".scrollable");
