@@ -13,10 +13,11 @@ import store from './store'
 import firebase from 'firebase'
 import vuetify from './plugins/vuetify';
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
-
+import VueCarousel from 'vue-carousel';
 Vue.config.productionTip = false
 
 Vue.use(Vuetify);
+Vue.use(VueCarousel);
 // Vue.use(VueFire);
 
 // export default new Vuetify({

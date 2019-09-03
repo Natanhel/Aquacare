@@ -1,21 +1,13 @@
 <template>
   <div class="aquarium">
     <v-app>
-      <v-card color="#F9F9F9" width="400px">
-
-          <v-flex>            
-              <v-btn @click="deleteAquarium">  
-                  <v-icon dark >delete</v-icon>Delete
-              </v-btn>
-              <!-- <v-spacer></v-spacer> -->
-              <!-- <v-btn @click="saveAquarium">
-                  <v-icon>save</v-icon>Save
-              </v-btn> -->
-          </v-flex>
+      <v-card color="#F9F9F9" width="500px" flat>
         <v-container fluid class="green lighten-5">
+
+        <h5>Aquraium number {{ aquariumID +1 }}</h5>
           <v-layout wrap align-center>
             <v-flex xs6>
-              <v-subheader class="green--text">Aquarium type</v-subheader>
+              <v-subheader class="green--text"><h2>Aquarium type</h2></v-subheader>
             </v-flex>
             <v-flex xs6>
               <v-select v-model="aquariumType" :items="aquariumTypes" label="Select" single-line />
@@ -23,15 +15,20 @@
           </v-layout>
         </v-container>
         <v-flex class="card">
-          <!-- <v-container fluid grid-list-sm> -->
           <v-layout wrap>
             <v-flex v-for="(param, propertyName, index) in params" :key="index" xs6>
-              <v-text-field @change="onChangedParams(propertyName,$event)" :label="propertyName" :value="param"></v-text-field>
+              <v-text-field class="pa-4" @change="onChangedParams(propertyName,$event)" :label="propertyName" :value="param"></v-text-field>
             </v-flex>
             <v-spacer></v-spacer>
           </v-layout>
-          <!-- </v-container> -->
         </v-flex>
+
+        <v-flex>            
+          <v-btn @click="deleteAquarium">  
+              <v-icon dark >delete</v-icon>Delete
+          </v-btn>
+        </v-flex>
+        
       </v-card>
     </v-app>
   </div>
@@ -49,7 +46,7 @@ export default {
       } else if (this.aquariumType === "Marine") {
         return this.Marine;
       }
-    }
+    },
   },
   props: {
     aquariumTypeProp: {
@@ -138,8 +135,8 @@ export default {
 
 <style>
 .aquarium {
-  overflow: hidden;
-  height: 78vh;
+  /* overflow: hidden; */
+  height: 73.4vh;
   width: 100%;
 }
 </style>

@@ -1,44 +1,80 @@
 <template>
-  <div class="aquariumSettings">
+  <div class="aquariumSettins">
   <loader v-show="!loaded"/>
     
   <div v-show="loaded">
     <h1>Aquarium Settings</h1>
 
-    <button @click="scroll_left">
+    <!-- <v-card  flat>
+    <button @click="aquariumNum--">
       <v-icon x-large>arrow_left</v-icon>
-    </button>
-
-    <v-btn fab @click="addAquarium">
-      <v-icon dark>add</v-icon>
-    </v-btn>
-
-    <button @click="scroll_right">
-      <v-icon x-large>arrow_right</v-icon>
-    </button>
-
-    <v-spacer/>
+    </button> -->
 
     <v-btn @click="saveAquariums">
-      <v-icon dark>save</v-icon>
+      <v-icon dark>save</v-icon>save
     </v-btn>
 
-    <v-container grid-list-xl class="scrollable">
-      <v-layout v-bind="binding">
-        <v-container v-for="(value, index) in aquariums" :key="index">
-          <!-- <a>Aquarium {{ index }}</a> -->
-          <Aquarium class="aquarium"
-                    :aquariumTypeProp="value.aquariumType"
-                    :Freshwater="value.Freshwater"
-                    :Marine="value.Marine"
-                    :index="index"
-                    @deleteCurrentAquarium="deleteAquarium"
-                    @changedCurrentParams="changedParams"
-                    @changeType="changeType"/>
-        </v-container>
-      </v-layout>
-    </v-container>
+    <v-btn  bottom
+            right @click="addAquarium">
+      <v-icon>add</v-icon>add
+    </v-btn>
+
+    <v-btn  bottom
+            right @click="deleteAll">
+      <v-icon>delete</v-icon>delete all
+    </v-btn>
+
+    <!-- <button @click="aquariumNum++">
+      <v-icon x-large>arrow_right</v-icon>
+    </button>
+    </v-card> -->
+
+    <v-spacer/>
+    <br/>
+
+
+    <v-sheet
+        class="mx-auto"
+        elevation="8"
+        max-width="1000">
+
+        <v-slide-group
+        v-model="model"        
+          class="pa-4"
+          prev-icon="arrow_left"
+          next-icon="arrow_right"
+          center-active
+          show-arrows>
+
+          <v-slide-item
+            v-for="(value, index) in aquariums" :key="index"
+            v-slot:default="{ active }">
+
+            <v-card
+              class="ma-4"
+              height="100%"
+              width="400">
+
+              <Aquarium class="aquarium"
+                        :aquariumTypeProp="value.aquariumType"
+                        :Freshwater="value.Freshwater"
+                        :Marine="value.Marine"
+                        :index="index"
+                        @deleteCurrentAquarium="deleteAquarium"
+                        @changedCurrentParams="changedParams"
+                        @changeType="changeType"/>
+
+            </v-card>
+
+          </v-slide-item>
+
+        </v-slide-group>
+
+      </v-sheet>
+
   </div>
+
+
   </div>
 </template>
 
@@ -47,6 +83,7 @@
 import firebase from 'firebase';
 import Aquarium from '@/components/Aquarium.vue'
 import Loader from '@/components/Loader.vue'
+
 export default {
   name: 'aquariumSettings',
   components: {
@@ -73,6 +110,7 @@ export default {
           // console.log("Document data:", doc.data());
           var userData = JSON.parse(JSON.stringify(doc.data()))
           console.log(Object.keys(userData).length)
+
           for (var i = 0; i < Object.keys(userData).length; i++) {
             var aquariumTypeData = userData[i]['aquariumType'];
 
@@ -84,11 +122,17 @@ export default {
                 Freshwater: dataJSON,
                 Marine: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").MarineParams)),
               });
-            } else {
+            } else if (aquariumTypeData == 'Marine') {
               userAquariums.push({
                 aquariumType: aquariumTypeData,
                 Freshwater: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").FreshwaterParams)),
                 Marine: dataJSON,
+              });
+            } else {
+              userAquariums.push({
+                aquariumType: aquariumTypeData,
+                Freshwater: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").FreshwaterParams)),
+                Marine: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").MarineParams)),
               });
             }
           }
@@ -101,22 +145,33 @@ export default {
     })
   },
   data: () => ({
-    aquariums: []
+    model: null,
+    aquariums: [],
+    aquariumNum: 0,
   }),
   mounted: {
     
   },
   methods: {
-    deleteAquarium (index){
-      
+    deleteAquarium (index){      
       this.$delete(this.aquariums,index);
-      alert('Deleted aquarium succesfully, to confirm changes save your changes')
+      // alert('Deleted aquarium succesfully, to confirm changes save your changes')
     },
     changeType (type, index){
       this.aquariums[index].aquariumType = type;
     },
     changedParams(propertyName,aquariumType,event,index){
       this.aquariums[index][aquariumType][propertyName] = event
+    },
+    deleteAll(){
+      // this.aquariums.forEach((aquarium,index)=>{
+      //   this.deleteAquarium(index)
+      // })
+      for (let index = this.aquariums.length-1; 
+            index >= 0; index--) {
+        this.deleteAquarium(index);
+        
+      }
     },
     saveAquariums: function(){
       var db = firebase.firestore();
@@ -142,6 +197,10 @@ export default {
 
         mainJSObj[index] = jsObj
       })
+
+      if(this.aquariums.length == 0){
+        mainJSObj[0] = {}
+      }
 
 
       console.log(mainJSObj);
@@ -192,17 +251,27 @@ export default {
 
 <style>
 
+.action_bar{
+  padding: 20px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;    
+}
+
 .scrollable{
   overflow-x: scroll;
   /* margin-top: 20px; */
   /* height: 700px; */
   /* width: 100%; */
   overflow-y: disabled;
-  animation: fadeIn 0.5s ease-in;
+  animation: fadeIn 1s ease-in;
   max-width: 1000px;
   overflow: auto;
-  /* min-height: 100%;
-  max-height: 100%; */
+  /* min-height: 100%; */
+  max-height: 100%;
+
+  /* height: 640px;
+  width: 300px; */
 }
 
 
