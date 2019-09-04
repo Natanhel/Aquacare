@@ -1,13 +1,13 @@
 <template>
   <div class="home">
-    <v-container fill-height> 
-    <v-layout row wrap align-center>
+    <v-container  fill-height> 
+    <v-layout column wrap align-center>
       <v-list
         v-for="(page, index) in pages"
         :key="index">
           <v-list-item router :to="page.router">
             <v-list-item-title>
-              <v-flex>
+              <v-flex xs12 align-self-center="true">
                 <v-img :src="page.imgSrc" height="140" width="140"/>
                 <h4 color="green">{{ page.name }}</h4>
               </v-flex>

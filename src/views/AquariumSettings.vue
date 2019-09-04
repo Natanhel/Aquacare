@@ -1,60 +1,42 @@
 <template>
   <div class="aquariumSettins">
+    
   <loader v-show="!loaded"/>
     
   <div v-show="loaded">
+
+    <v-responsive>
     <h1>Aquarium Settings</h1>
 
     <!-- <v-card  flat>
     <button @click="aquariumNum--">
       <v-icon x-large>arrow_left</v-icon>
     </button> -->
-
+    <v-flex class="header">
     <v-btn @click="saveAquariums">
       <v-icon dark>save</v-icon>save
     </v-btn>
 
-    <v-btn  bottom
-            right @click="addAquarium">
+    <v-btn  @click="addAquarium">
       <v-icon>add</v-icon>add
     </v-btn>
 
-    <v-btn  bottom
-            right @click="deleteAll">
+    <v-btn  @click="deleteAll">
       <v-icon>delete</v-icon>delete all
     </v-btn>
+    </v-flex>
 
     <!-- <button @click="aquariumNum++">
       <v-icon x-large>arrow_right</v-icon>
     </button>
     </v-card> -->
+      <div>
+        <!-- <v-list> -->
 
-    <v-spacer/>
-    <br/>
-
-
-    <v-sheet
-        class="mx-auto"
-        elevation="8"
-        max-width="1000">
-
-        <v-slide-group
-        v-model="model"        
-          class="pa-4"
-          prev-icon="arrow_left"
-          next-icon="arrow_right"
-          center-active
-          show-arrows>
-
-          <v-slide-item
-            v-for="(value, index) in aquariums" :key="index"
-            v-slot:default="{ active }">
-
-            <v-card
-              class="ma-4"
-              height="100%"
-              width="400">
-
+          <v-list-item class="mx-auto"
+            v-for="(value, index) in aquariums" :key="index">
+            <v-card height="800px" class="mx-auto" flat>
+              
               <Aquarium class="aquarium"
                         :aquariumTypeProp="value.aquariumType"
                         :Freshwater="value.Freshwater"
@@ -63,15 +45,12 @@
                         @deleteCurrentAquarium="deleteAquarium"
                         @changedCurrentParams="changedParams"
                         @changeType="changeType"/>
-
             </v-card>
+          </v-list-item>
 
-          </v-slide-item>
-
-        </v-slide-group>
-
-      </v-sheet>
-
+        <!-- </v-list> -->
+      </div>
+    </v-responsive>
   </div>
 
 
@@ -93,6 +72,15 @@ export default {
   created() {
     this.loaded = false;
     fetch('/aquariums').then(() => {
+      //get buffer data if exists
+      var buffered = this.$store.getters.aquariumsBuffer;
+      if  (buffered.length != 0){
+          buffered.forEach(el => {
+            this.aquariums.push(el);
+          })
+        this.loaded = true;
+        return;
+      }
       // We fetch the user aquariums from the DB in order to initialize
       // user aquariums :)
       // var userAquariums = [];
@@ -139,6 +127,10 @@ export default {
           userAquariums.forEach(el => {
             this.aquariums.push(el);
           })
+
+          //save to buffer
+          this.$store.commit('aquariumsSave2Buffer',userAquariums);
+
           this.loaded = true;
         }
       })
@@ -149,12 +141,11 @@ export default {
     aquariums: [],
     aquariumNum: 0,
   }),
-  mounted: {
-    
-  },
   methods: {
-    deleteAquarium (index){      
-      this.$delete(this.aquariums,index);
+    deleteAquarium (index){
+      if  (this.aquariums.length != 1){
+        this.$delete(this.aquariums,index);
+      }
       // alert('Deleted aquarium succesfully, to confirm changes save your changes')
     },
     changeType (type, index){
@@ -285,5 +276,18 @@ export default {
   100%{
     opacity: 1;
   }
+}
+.aquarium{
+  padding: 20px;
+  margin-bottom: 50px ;
+}
+.card{
+  margin-bottom: 50px ;
+
+}
+
+.header{
+  
+  margin-bottom: 10px;
 }
 </style>

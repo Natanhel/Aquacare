@@ -9,15 +9,16 @@ import 'firebase/firestore'
 
 // import colors from 'vuetify/es5/util/colors'
 import router from './router'
-import store from './store'
+// import store from './store'
 import firebase from 'firebase'
 import vuetify from './plugins/vuetify';
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
-import VueCarousel from 'vue-carousel';
+import Vuex from 'vuex'
+
 Vue.config.productionTip = false
 
+Vue.use(Vuex)
 Vue.use(Vuetify);
-Vue.use(VueCarousel);
 // Vue.use(VueFire);
 
 // export default new Vuetify({
@@ -33,6 +34,21 @@ Vue.use(VueCarousel);
 
 require("firebase/firestore");
 
+const store = new Vuex.Store({
+  state: {
+    aquariumsBuffer: []
+  },
+  getters: {
+    aquariumsBuffer: (state) => {
+      return state.aquariumsBuffer
+    }
+  },
+  mutations: {
+    aquariumsSave2Buffer (state,aquariums) {
+      state.aquariumsBuffer = aquariums
+    }
+  }
+})
 
 let app = '';
 

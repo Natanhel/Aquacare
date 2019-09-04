@@ -1,7 +1,7 @@
 <template>
-  <div class="aquarium">
+  <div class="aquariumClass">
     <v-app>
-      <v-card color="#F9F9F9" width="500px" flat>
+      <v-card class="mx-auto" color="#F9F9F9" flat>
         <v-container fluid class="green lighten-5">
 
         <h5>Aquraium number {{ aquariumID +1 }}</h5>
@@ -14,20 +14,20 @@
             </v-flex>
           </v-layout>
         </v-container>
-        <v-flex class="card">
+        <v-flex xs12 class="mx-auto">
           <v-layout wrap>
             <v-flex v-for="(param, propertyName, index) in params" :key="index" xs6>
               <v-text-field class="pa-4" @change="onChangedParams(propertyName,$event)" :label="propertyName" :value="param"></v-text-field>
             </v-flex>
-            <v-spacer></v-spacer>
+            <!-- <v-spacer></v-spacer> -->
           </v-layout>
         </v-flex>
 
-        <v-flex>            
+        <!-- <v-flex>             -->
           <v-btn @click="deleteAquarium">  
               <v-icon dark >delete</v-icon>Delete
           </v-btn>
-        </v-flex>
+        <!-- </v-flex> -->
         
       </v-card>
     </v-app>
@@ -136,7 +136,7 @@ export default {
 <style>
 .aquarium {
   /* overflow: hidden; */
-  height: 73.4vh;
+  height: 300px;
   width: 100%;
 }
 </style>

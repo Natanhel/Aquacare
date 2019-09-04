@@ -2,7 +2,7 @@
   <div id="app">
 
     <v-app >
-      <NavBar/>
+      <NavBar app/>
       <!-- <v-flex fill-height="true"> -->
         <transition name="moveInUp">
           <v-layout row wrap align-center justify-center>
