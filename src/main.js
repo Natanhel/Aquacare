@@ -46,6 +46,9 @@ const store = new Vuex.Store({
   mutations: {
     aquariumsSave2Buffer (state,aquariums) {
       state.aquariumsBuffer = aquariums
+    },
+    destroyStore(state){
+      state.aquariumsBuffer = []
     }
   }
 })

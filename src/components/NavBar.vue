@@ -102,6 +102,8 @@ export default {
         firebase.auth().signOut().then(() => {
           this.$router.replace('login');
         })
+        //Delete all the data in $store
+        this.$store.commit('destroyStore')
       }
     })
   },

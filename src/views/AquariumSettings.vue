@@ -97,33 +97,34 @@ export default {
 
           // console.log("Document data:", doc.data());
           var userData = JSON.parse(JSON.stringify(doc.data()))
-          console.log(Object.keys(userData).length)
+          // console.log(Object.keys(userData).length)
 
-          for (var i = 0; i < Object.keys(userData).length; i++) {
-            var aquariumTypeData = userData[i]['aquariumType'];
+          // for (var i = 0; i < Object.keys(userData).length; i++) {
+          //   var aquariumTypeData = userData[i]['aquariumType'];
 
-            var dataJSON = JSON.parse(JSON.stringify(userData[i]));
-            delete dataJSON['aquariumType']
-            if  (aquariumTypeData == 'Freshwater'){
-              userAquariums.push({
-                aquariumType: aquariumTypeData,
-                Freshwater: dataJSON,
-                Marine: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").MarineParams)),
-              });
-            } else if (aquariumTypeData == 'Marine') {
-              userAquariums.push({
-                aquariumType: aquariumTypeData,
-                Freshwater: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").FreshwaterParams)),
-                Marine: dataJSON,
-              });
-            } else {
-              userAquariums.push({
-                aquariumType: aquariumTypeData,
-                Freshwater: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").FreshwaterParams)),
-                Marine: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").MarineParams)),
-              });
-            }
-          }
+          //   var dataJSON = JSON.parse(JSON.stringify(userData[i]));
+          //   delete dataJSON['aquariumType']
+          //   if  (aquariumTypeData == 'Freshwater'){
+          //     userAquariums.push({
+          //       aquariumType: aquariumTypeData,
+          //       Freshwater: dataJSON,
+          //       Marine: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").MarineParams)),
+          //     });
+          //   } else if (aquariumTypeData == 'Marine') {
+          //     userAquariums.push({
+          //       aquariumType: aquariumTypeData,
+          //       Freshwater: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").FreshwaterParams)),
+          //       Marine: dataJSON,
+          //     });
+          //   } else {
+          //     userAquariums.push({
+          //       aquariumType: aquariumTypeData,
+          //       Freshwater: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").FreshwaterParams)),
+          //       Marine: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").MarineParams)),
+          //     });
+          //   }
+          // }
+          userAquariums = this.aquariumsObjectArray2JSONArray(userData);
           userAquariums.forEach(el => {
             this.aquariums.push(el);
           })
@@ -194,6 +195,7 @@ export default {
       }
 
 
+
       console.log(mainJSObj);
       // Update DB with the new aquarium
       //TODO Check that all aquariums have aquarium types
@@ -201,6 +203,13 @@ export default {
       .then(function(){
         alert("Saved your Aquariums :)")
       });
+
+      var userData = mainJSObj
+      var userAquariums = this.aquariumsObjectArray2JSONArray(userData);
+
+      //save to buffer
+      this.$store.commit('aquariumsSave2Buffer',userAquariums);
+
     },
     addAquarium: function (){
       this.aquariums.push({
@@ -209,7 +218,35 @@ export default {
         Marine: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").MarineParams)),
       });
     },
+    aquariumsObjectArray2JSONArray: (objArray) => {
+      var userAquariums = []
+      for (var i = 0; i < Object.keys(objArray).length; i++) {
+        var aquariumTypeData = objArray[i]['aquariumType'];
 
+        var dataJSON = JSON.parse(JSON.stringify(objArray[i]));
+        delete dataJSON['aquariumType']
+        if  (aquariumTypeData == 'Freshwater'){
+          userAquariums.push({
+            aquariumType: aquariumTypeData,
+            Freshwater: dataJSON,
+            Marine: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").MarineParams)),
+          });
+        } else if (aquariumTypeData == 'Marine') {
+          userAquariums.push({
+            aquariumType: aquariumTypeData,
+            Freshwater: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").FreshwaterParams)),
+            Marine: dataJSON,
+          });
+        } else {
+          userAquariums.push({
+            aquariumType: aquariumTypeData,
+            Freshwater: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").FreshwaterParams)),
+            Marine: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").MarineParams)),
+          });
+        }
+      }
+      return userAquariums;
+    },
     // userAquariums: function (){
       
     //   return [{
