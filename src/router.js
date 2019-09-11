@@ -10,6 +10,7 @@ import AquariumSettings from './views/AquariumSettings.vue';
 import Categorizer from './views/Categorizer.vue';
 import Scheduler from './views/Scheduler.vue';
 import Settings from './views/Settings.vue';
+import Deseases from './views/Deseases.vue';
 
 
 
@@ -74,6 +75,14 @@ const router = new Router({
       path: '/aquariumSettings',
       name: 'AquariumSettings',
       component: AquariumSettings,
+      meta: {
+        requiresAuth: true
+      },
+    },
+    {
+      path: '/deseases',
+      name: 'Deseases',
+      component: Deseases,
       meta: {
         requiresAuth: true
       },

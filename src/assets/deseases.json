@@ -1,0 +1,163 @@
+{
+    "Anchor Worms": {
+        "Image": "http://spectrum-sitecore-spectrumbrands.netdna-ssl.com/~/media/Pet/Tetra/Images/Learning%20Centers/Fish%20Learning%20Center/Sword_Worms.png",
+        "PhysicalSymptoms": [
+            "A protuberance of whitish-green threads from the fish's skin, ",
+            "Points of attachment are marked by inflammation"
+        ],
+        "BehavioralSigns": [
+            "Scratching against objects by the affected fish"
+        ],
+        "Cause": "Introduced into aquariums by infected fish, young anchor worms are small crustaceans that burrow into the fish’s skin and enter the muscles. Here they begin to develop and release eggs before they die—leaving behind damage, which can become infected.",
+        "Treatment": "Common methods include physically removing the parasite and cleaning the wound with an antiseptic like iodine. Also common is bathing freshwater fish in a seawater bath (35ppt) for about 5 minutes for multiple days until the parasite falls off.",
+        "Note" : ""
+    },
+    "Body Flukes": {
+        "Image": "http://spectrum-sitecore-spectrumbrands.netdna-ssl.com/~/media/Pet/Tetra/Images/Learning%20Centers/Fish%20Learning%20Center/Molly_Fulkes.png",
+        "PhysicalSymptoms": [
+            "Layer of mucus covering gills or body, ",
+            "Gills moving rapidly, ",
+            "Chewed on or eaten-away gills or fins, ",
+            "Reddened skin"
+        ],
+        "BehavioralSigns": [
+            "Scratching against objects by the affected fish"
+        ],
+        "Cause": "Undesirable environmental conditions—including poor water quality, overcrowding and/or stress by incompatible species—creates conditions that can lead to destructive outbreaks. Flukes are often present in aquariums but remain harmless under ideal conditions. Avoiding stressful conditions is a key to prevention, but once an outbreak occurs, prompt treatment is critical.",
+        "Treatment": "Tetra Parasite Guard® with praziquantel is effective but must be carefully administered per directions. One tablet per 10 gallons. Remove activated carbon and repeat after 48 hours; conduct a partial water change between treatments. Secondary infections are also common and can be treated with antibiotics or general cures like Lifeguard® or Fungus Guard®.",
+        "Note": "Pale fish with drooping fins, rapid respiration and/or hollow bellies indicate more extensive infestation."
+    },
+    "Clamped Fin": {
+        "Image": "http://spectrum-sitecore-spectrumbrands.netdna-ssl.com/~/media/Pet/Tetra/Images/Learning%20Centers/Fish%20Learning%20Center/Neon_Clamp.png",
+        "PhysicalSymptoms": [
+            "Fins are folded against the body and not fanned out as they should be"
+        ],
+        "BehavioralSigns": [
+            "Listless behavior"
+        ],
+        "Cause": "Not indicative of one specific disease. Can be a reflection of various problems, including bad water quality and/or parasites. Important to first determine the specific problem in order to treat fish properly.",
+        "Treatment": "If the illness is the result of infections, a multipurpose antibiotic like Tetra Lifeguard® is the first line of treatment. A good practice of adding 1 tbs. aquarium salt per gallon will help prevent clamped fin.",
+        "Note": "Always remove activated carbon before administering any treatments."
+    },
+    "Dropsy" : {
+        "Image" : "http://spectrum-sitecore-spectrumbrands.netdna-ssl.com/~/media/Pet/Tetra/Images/Learning%20Centers/Fish%20Learning%20Center/Gold_Dropsy.png",
+        "PhysicalSymptoms": [
+            "Bloating, ",
+            "Protruding scales"
+        ],
+        "BehavioralSigns": [],
+        "Cause": "A bacterial infection of the kidneys, which causes fluid accumulation or renal failure. It appears to create problems only in weakened fish. May stem from untidy aquarium conditions.",
+        "Treatment": "Tetra Lifeguard® Remove filter carbon and turn off UV sterilizer. Add one tablet per day to each 5 gallons of water. Treat for 5 consecutive days. Repeat until symptoms clear. External treatments are challenging; preventative care with regular water changes, maintaining ideal aquarium chemistry and adding aquarium salt is highly recommended. Antibiotic injections or feed are most effective, but some wide spectrum antibiotics may help, like Tetra Fungus Guard®.",
+        "Note": ""
+    },
+    "Fish Ick" : {
+        "Image": "http://spectrum-sitecore-spectrumbrands.netdna-ssl.com/~/media/Pet/Tetra/Images/Learning%20Centers/Fish%20Learning%20Center/BMolly_Ick.png",
+        "PhysicalSymptoms": [
+            "Spots that resemble grains of salt or white sand on the skin, ",
+            "May be slightly raised, ",
+            "Clamped fins"
+        ],
+        "BehavioralSigns": [
+            "Scratching against objects due to irritated skin, ",
+            "Gasping at the water’s surface"
+        ],
+        "Cause": "Usually attacks fish that are stressed, which can be caused by factors including rapid temperature and pH fluctuations.",
+        "Treatment": "Tetra® Lifeguard® Remove filter carbon and turn off UV sterilizer. Add one tablet per day to each 5 gallons of water. Treat for 5 consecutive days. Repeat until symptoms clear. Secondary infections are also common and can be treated with antibiotics or general cures like Tetra Ick® Guard® or Tetra® Fungus Guard®. Consistent temperature and good water quality will help prevent infections, in addition to using aquarium salt.",
+        "Note": ""
+    },
+    "Fungus" : {
+        "Image" : "http://spectrum-sitecore-spectrumbrands.netdna-ssl.com/~/media/Pet/Tetra/Images/Learning%20Centers/Fish%20Learning%20Center/Oscar_Fungus.png",
+        "PhysicalSymptoms": [
+            "gray or whitish growth in and on the skin and/or fins, ",
+            "Untreated fungus resembles a cottony growth, ",
+            "Eventually, as fungus continues to eat away at the fish’s body, the fish will die"
+        ],
+        "BehavioralSigns": [],
+        "Cause": "Fish who develop fungus are already in a vulnerable state, the result of other serious health problems or attacks, such as parasites, a physical injury or a bacterial infection.",
+        "Treatment": "Tetra Lifeguard Remove filter carbon and turn off UV sterilizer. Add one tablet per day to each 5 gallons of water. Treat for 5 consecutive days. Repeat until symptoms clear. Many bacterial infections are misdiagnosed as fungal, so common medications include both a fungicide and antibiotics. Tetra Fungus Guard® contains malachite green and formalin; treat one tablet per 10 gallons once every 4 days until symptoms are gone. Remove activated carbon and conduct partial water changes in between treatments.",
+        "Note": ""
+    },
+    "Gill Flukes" : {
+        "Image" : "http://spectrum-sitecore-spectrumbrands.netdna-ssl.com/~/media/Pet/Tetra/Images/Learning%20Centers/Fish%20Learning%20Center/Gourami_Gillflukes.png",
+        "PhysicalSymptoms": [
+            "Infected gills and skin, ",
+            "Similar to ick, but telltale sign is movement and possibly eyespots, something that is not found in ick. Use magnification lens to observe, ",
+            "Once gills are destroyed, fish will die"
+        ],
+        "BehavioralSigns": [],
+        "Cause": "Undesirable environmental conditions—including poor water quality, overcrowding and/or stress by incompatible species—creates conditions that can lead to destructive outbreaks. Flukes are often present in aquariums but remain harmless under ideal conditions. Avoiding stressful conditions is a key to prevention, but once an outbreak occurs, prompt treatment is critical.",
+        "Treatment": "Tetra Parasite Guard® with praziquantel is effective but must be carefully administered per directions. One tablet per 10 gallons. Remove activated carbon and repeat after 48 hours; conduct a partial water change between treatments. Secondary infections are also common and can be treated with antibiotics or general cures like Lifeguard® or Fungus Guard®.",
+        "Note": ""
+    },
+    "Gill Mites" : {
+        "Image" : "http://spectrum-sitecore-spectrumbrands.netdna-ssl.com/~/media/Pet/Tetra/Images/Learning%20Centers/Fish%20Learning%20Center/Guppy_mites.png",
+        "PhysicalSymptoms": [
+            "Gill covers that are partially open"
+        ],
+        "BehavioralSigns": [
+            "Gasping at the water’s surface "
+        ],
+        "Cause": "Fish that are already infested by gill mites are brought into aquariums. The tiny mites stay on the fish’s gills, and attack the fish by feeding on blood and living flesh.",
+        "Treatment": "Tetra Lifeguard® Remove filter carbon and turn off UV sterilizer. Add one tablet per day to each 5 gallons of water. Treat for 5 consecutive days. Repeat until symptoms clear. Tetra Parasite Guard® with praziquantel is effective but must be carefully administered per directions. One tablet per 10 gallons. Remove activated carbon and repeat after 48 hours; conduct a partial water change between treatments. Secondary infections are also common and can be treated with antibiotics or general cures like Tetra Fungus Guard®.",
+        "Note": ""
+    },
+    "Hemorrhagic Septicemia" : {
+        "Image": "http://spectrum-sitecore-spectrumbrands.netdna-ssl.com/~/media/Pet/Tetra/Images/Learning%20Centers/Fish%20Learning%20Center/SIlver_VHS.png",
+        "PhysicalSymptoms": [
+            "A variety of different symptoms may occur, though some fish exhibit no external symptoms, ",
+            "Hemorrhaging of internal organs, skin and muscle, ",
+            "Bulging eyes, ",
+            "Bloated abdomens, ",
+            "Bruised-looking, reddish tints to eyes, skin, gills and fins, ",
+            "Open sores"
+        ],
+        "BehavioralSigns": [
+            "Abnormal behavior"
+        ],
+        "Cause": "Infection that is brought into aquariums by fish already infected with a deadly virus called Viral hemorrhagic septicemia virus (VHSV or VHSv).",
+        "Treatment": "There is no known cure for this virus. Sometimes treating secondary infections with wide spectrum antibiotics or general use treatments like Tetra Lifeguard® will reduce mortality. Add one tablet Lifeguard to each 5 gallons and treat 5 consecutive days. Remove activated carbon and conduct a partial water change in between treatments.",
+        "Note": "Always remove activated carbon before administering any treatments."
+    },
+    "Lice" : {
+        "Image" : "http://spectrum-sitecore-spectrumbrands.netdna-ssl.com/~/media/Pet/Tetra/Images/Learning%20Centers/Fish%20Learning%20Center/Tiger_lice.png",
+        "PhysicalSymptoms": [
+          "Lice have eight legs—and resemble tiny pale crabs. They appear as flat, dark oval dots crawling on fish, ",
+          "Lice use suckers to attach to fish. Then they pierce the skin and feed on the host"
+        ],
+        "BehavioralSigns": [
+            "Fish are aggravated and restless, ",
+            "Usually fish will rub skin against aquarium glass or other objects in an effort to remove lice"
+        ],
+        "Cause": "Usually from fish that were living in an outdoor pond at one time and bringing them into an indoor aquarium. Also, fish lice can be introduced from wild fish that are added to an aquarium. Lice travel from one host fish to another, spreading bacteria and viruses, so once they’re in your aquarium, you must get rid of them.",
+        "Treatment": "Common methods include physically removing the parasite and cleaning the wound with an antiseptic like iodine, as well as bathing freshwater fish in a seawater bath (35ppt) for about 5 minutes for multiple days until the parasite falls off, or using a formalin bath.",
+        "Note": ""
+    },
+    "Ragged Tail Fin" : {
+        "Image" : "http://spectrum-sitecore-spectrumbrands.netdna-ssl.com/~/media/Pet/Tetra/Images/Learning%20Centers/Fish%20Learning%20Center/Angel_RaggedTail.png",
+        "PhysicalSymptoms": [
+            "A progressive deterioration of the tail and/or fins, ",
+            "Fins become frayed or their color may fade"
+        ],
+        "BehavioralSigns": [
+            
+        ],
+        "Cause": "A bacterial infection may cause this tail and fin rot in susceptible fish—those who are bullied or injured by fin-nipping tank mates—especially in aquariums with poor conditions.",
+        "Treatment": "Tetra Lifeguard® Remove filter carbon and turn off UV sterilizer. Add one tablet per day to each 5 gallons of water. Treat for 5 consecutive days. Repeat until symptoms clear. If the clamped fins are the result of infections, a multipurpose treatment like Tetra Fungus Guard® is the first line of treatment. Good practice of adding 1 tbs. aquarium salt per gallon will help prevent clamped fins.",
+        "Note": ""
+    },
+    "Tail, Fin and Mouth Rot" : {
+        "Image" : "http://spectrum-sitecore-spectrumbrands.netdna-ssl.com/~/media/Pet/Tetra/Images/Learning%20Centers/Fish%20Learning%20Center/Betta_Rot.png",
+        "PhysicalSymptoms": [
+            "A progressive deterioration of the tail and/or fins, ",
+            "Fins become frayed or their color may fade"
+        ],
+        "BehavioralSigns": [
+            
+        ],
+        "Cause": "A bacterial infection may cause tail, fin and mouth rot in susceptible fish—those who are bullied or injured by fin-nipping tank mates—especially in aquariums with poor conditions.",
+        "Treatment": "Tetra Lifeguard® Remove filter carbon and turn off UV sterilizer. Add one tablet per day to each 5 gallons of water. Treat for 5 consecutive days. Repeat until symptoms clear. If the clamped fins are the result of infections, a multipurpose treatment like Tetra Fungus Guard® is the first line of treatment. Good practice of adding 1 tbs. aquarium salt per gallon will help prevent clamped fins.",
+        "Note": "Always remove activated carbon before administering any treatments."
+    }
+}
+
+

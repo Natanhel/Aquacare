@@ -34,7 +34,7 @@
 
 <script>
 import firebase from 'firebase'
-// import func from '../../vue-temp/vue-editor-bridge';
+
 export default {
     name: 'signup',
     data: () => ({
@@ -45,7 +45,6 @@ export default {
     methods: {
         signup: function() {
             if (this.password.localeCompare(this.confirm_password) == 0) {
-                // firebase.auth().sendSignInLinkToEmail
 
                 var actionCodeSettings = {
                     // URL you want to redirect back to. The domain (www.example.com) for this
@@ -53,17 +52,8 @@ export default {
                     // url: window.location.host + '/confirmEmail',
                     url: 'https://aquacare-3cdce.firebaseapp.com/confirmEmail',
                     
-                    // This must be true.
+                    // This must be true - according to API.
                     handleCodeInApp: true,
-                    // iOS: {
-                    //     bundleId: 'com.example.ios'
-                    // },
-                    // android: {
-                    //     packageName: 'com.example.android',
-                    //     installApp: true,
-                    //     minimumVersion: '12'
-                    // },
-                    // dynamicLinkDomain: 'example.page.link'
                 };
 
 
@@ -83,6 +73,7 @@ export default {
                         user.user.sendEmailVerification().then(
                             function() {
                             console.log('Email sent.')
+                            alert('A confirmation E-mail has been sent to your inbox, please confirm your email')
                         }).catch(function(error) {
                             console.log('Oops. ' + error.message)
                         });
@@ -93,6 +84,7 @@ export default {
                 )
 
                 firebase.auth().signOut()
+                
             }   
         },
     },

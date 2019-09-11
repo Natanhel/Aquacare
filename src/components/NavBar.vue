@@ -23,7 +23,7 @@
     </v-toolbar>
 
     <a v-if="logged">
-      <v-navigation-drawer app v-model="drawer" enable-resize-watcher absolute
+      <v-navigation-drawer app v-model="drawer" enable-resize-watcher
       class="green lighten-5">
 
        <v-list>
@@ -62,7 +62,7 @@ export default {
       { title: 'Account', icon: 'account_box', route: '/account', action: '' },
       // { title: 'My Aquarium', icon: 'bubble_chart', route: '/aquariumSettings', action: '' },
       // { title: 'Find Desease', icon: 'find_in_page', route: '/categorizer', action: '' },
-      // { title: 'Scheduler', icon: 'schedule', route: '/scheduler', action: '' },
+      { title: 'Deseases', icon: 'lens', route: '/deseases', action: '' },
       { title: 'Settings', icon: 'settings', route: '/settings', action: '' },
       { title: 'About', icon: 'gavel', route: '/aboutAuth', action: '' },
     ],

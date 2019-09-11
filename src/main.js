@@ -2,8 +2,6 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import App from './App.vue'
-
-import VueFire from 'vuefire'
 import 'firebase/firestore'
 // import '../node_modules/vuetify/dist/vuetify.min.css';
 
@@ -36,7 +34,12 @@ require("firebase/firestore");
 
 const store = new Vuex.Store({
   state: {
-    aquariumsBuffer: []
+    aquariumsBuffer: [],
+    accountSettings: {
+      themeStyle: 1,
+      membership: false,
+      
+    },
   },
   getters: {
     aquariumsBuffer: (state) => {

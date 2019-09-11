@@ -6,6 +6,7 @@
   <div v-show="loaded">
 
     <v-responsive>
+      <v-flex xs8 offset-xs2>
     <h1>Aquarium Settings</h1>
 
     <!-- <v-card  flat>
@@ -50,7 +51,9 @@
 
         <!-- </v-list> -->
       </div>
+      </v-flex>
     </v-responsive>
+  
   </div>
 
 
@@ -97,34 +100,9 @@ export default {
 
           // console.log("Document data:", doc.data());
           var userData = JSON.parse(JSON.stringify(doc.data()))
-          // console.log(Object.keys(userData).length)
 
-          // for (var i = 0; i < Object.keys(userData).length; i++) {
-          //   var aquariumTypeData = userData[i]['aquariumType'];
-
-          //   var dataJSON = JSON.parse(JSON.stringify(userData[i]));
-          //   delete dataJSON['aquariumType']
-          //   if  (aquariumTypeData == 'Freshwater'){
-          //     userAquariums.push({
-          //       aquariumType: aquariumTypeData,
-          //       Freshwater: dataJSON,
-          //       Marine: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").MarineParams)),
-          //     });
-          //   } else if (aquariumTypeData == 'Marine') {
-          //     userAquariums.push({
-          //       aquariumType: aquariumTypeData,
-          //       Freshwater: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").FreshwaterParams)),
-          //       Marine: dataJSON,
-          //     });
-          //   } else {
-          //     userAquariums.push({
-          //       aquariumType: aquariumTypeData,
-          //       Freshwater: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").FreshwaterParams)),
-          //       Marine: JSON.parse(JSON.stringify(require("../assets/initAquariumParams.json").MarineParams)),
-          //     });
-          //   }
-          // }
           userAquariums = this.aquariumsObjectArray2JSONArray(userData);
+          
           userAquariums.forEach(el => {
             this.aquariums.push(el);
           })
