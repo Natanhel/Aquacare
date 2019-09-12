@@ -6,7 +6,9 @@
   <div v-show="loaded">
 
     <v-responsive>
-      <v-flex xs8 offset-xs2>
+      <div v-if="isMobile"/>
+      <v-flex xs12 offset-xs0 >
+      
     <h1>Aquarium Settings</h1>
 
     <!-- <v-card  flat>
@@ -120,6 +122,17 @@ export default {
     aquariums: [],
     aquariumNum: 0,
   }),
+
+  computed: {
+      isMobile() {
+          if( screen.width <= 760 ) {
+              return true;
+          }
+          else {
+              return false;
+          }
+      },
+  },
   methods: {
     deleteAquarium (index){
       if  (this.aquariums.length != 1){

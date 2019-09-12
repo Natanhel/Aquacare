@@ -8,7 +8,7 @@
           <v-list-item router :to="page.router">
             <v-list-item-title>
               <v-flex xs12 align-self-center="true">
-                <v-img :src="page.imgSrc" height="140" width="140"/>
+                <v-img class="icon" :src="page.imgSrc" height="140" width="140"/>
                 <h4 color="green">{{ page.name }}</h4>
               </v-flex>
             </v-list-item-title>
@@ -36,3 +36,9 @@ export default {
   }),
 };
 </script>
+
+<style>
+.icon{
+  background-color: transparent !important;
+}
+</style>

@@ -2,7 +2,6 @@
   <div class="deseases">
     <h1 class="header">Deseases Index</h1>
     <div>
-        <v-flex xs8 offset-xs2>
         <!-- <v-simple-table dense class="table">
             <thead>
                 <tr>
@@ -29,15 +28,18 @@
             </tbody>
         </v-simple-table> -->
         <div v-if="!isMobile">
+        <v-flex xs10 offset-xs2>
         <v-data-table 
             :headers="headers"
             :items="deseasesWeb">
             <template v-slot:item.Image="{ item }">
-                <img :src="item.Image"/>
+                <img :src="item.Image" height="200px" width="200px"/>
             </template>
         </v-data-table>
+        </v-flex>
         </div>
         <div v-else>
+        <v-flex xs10 offset-xs1>
         <v-list v-for="(desease, propertyName, indexDesease) in deseases" :key="indexDesease">
             
             <v-card class="mx-auto">
@@ -74,8 +76,8 @@
                 </v-list-item-action>
             </v-card>
         </v-list>
-        </div>
         </v-flex>
+        </div>
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="NavBar">
 
-    <v-toolbar light >
+    <v-toolbar light enable-resize-watcher>
       <v-app-bar-nav-icon @click="drawer = !drawer">
         <v-icon color="green" right>menu</v-icon>
       </v-app-bar-nav-icon>
@@ -62,7 +62,7 @@ export default {
       { title: 'Account', icon: 'account_box', route: '/account', action: '' },
       // { title: 'My Aquarium', icon: 'bubble_chart', route: '/aquariumSettings', action: '' },
       // { title: 'Find Desease', icon: 'find_in_page', route: '/categorizer', action: '' },
-      { title: 'Deseases', icon: 'lens', route: '/deseases', action: '' },
+      { title: 'Deseases', icon: 'info', route: '/deseases', action: '' },
       { title: 'Settings', icon: 'settings', route: '/settings', action: '' },
       { title: 'About', icon: 'gavel', route: '/aboutAuth', action: '' },
     ],
